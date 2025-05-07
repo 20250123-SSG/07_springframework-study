@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean class="com.ksh.ioc.section01.xmlconfig.Calculator" id="calculator"/>
+
+  <bean class="com.ksh.ioc.section01.xmlconfig.Student" id="student1">
+
+    <property name="name" value="홍귈동"/>
+    <property name="aca" value="SSG I&amp;C"/>
+    <property name="classNo" value="2"/>
+    <property name="calc" ref="calculator"/>
+
+  </bean>
+  <bean class="com.ksh.ioc.section01.xmlconfig.Student" id="student2"
+
+    p:name="김말똥"
+    p:aca="SSG I&amp;C"
+    p:classNo="2"
+    p:calc-ref="calculator"/>
+
+  <bean class="com.ksh.ioc.section01.xmlconfig.Student" id="student3">
+
+    <constructor-arg value="강궤순"/>
+    <constructor-arg value="SSG I&amp;C"/>
+    <constructor-arg value="4"/>
+    <constructor-arg ref="calculator"/>
+
+  </bean>
+
+  <bean class="com.ksh.ioc.section01.xmlconfig.StudentService" id="studentService"/>
+</beans>
