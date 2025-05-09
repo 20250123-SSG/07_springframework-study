@@ -3,7 +3,7 @@ plugins {
     id 'war'
 }
 
-group 'com.kangbroo'
+group 'com.ibe6'
 version '1.0-SNAPSHOT'
 
 repositories {
