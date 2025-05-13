@@ -1,5 +1,6 @@
 package com.ibe6.sbatis.service;
 
+import com.ibe6.sbatis.dao.MenuMapper;
 import com.ibe6.sbatis.dto.MenuDto;
 
 import java.util.List;
@@ -14,6 +15,9 @@ public interface MenuService {
     int registMenu(MenuDto menu);
     // 메뉴수정서비스
     int modifyMenu(MenuDto menu);
-    // 메뉴삭제서비스
+    // 메뉴일괄삭제서비스
     int removeMenu(String[] codes);
+
+    // 트랜잭션테스트용
+    int registTwoMenu();
 }

@@ -7,9 +7,7 @@
   </appender>
 
   <logger name="org.springframework" level="INFO" />
-  <logger name="com.ibe6.sbatis" level="DEBUG" />
-  <logger name="com.ibe6.sbatis.dao" level="INFO" />
-
+  <logger name="com.ibe6.ajax" level="DEBUG"/>
 
   <root level="WARN">
     <appender-ref ref="consoleLog"/>
