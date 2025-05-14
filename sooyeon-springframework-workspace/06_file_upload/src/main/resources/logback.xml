@@ -7,10 +7,10 @@
   </appender>
 
   <logger name="org.springframework" level="INFO" />
-  <logger name="프로젝트의 베이스 패키지" level="DEBUG" />
-  <logger name="프로젝트의 dao 관련 패키지" level="INFO" />
+  <logger name="com.sotogito.fileupload" level="DEBUG" />
+  <logger name="com.sotogito.fileupload.dao" level="INFO" />
 
-  <root level="WARN">
+  <root level="WARN">s
     <appender-ref ref="consoleLog"/>
   </root>
 </configuration>
