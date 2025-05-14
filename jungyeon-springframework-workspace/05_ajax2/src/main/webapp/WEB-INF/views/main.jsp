@@ -105,7 +105,37 @@
 <div id="result4">요청4의 결과가 보여지는 영역</div>
 
 <script>
+  document.getElementById('btn4').addEventListener('click', evt => {
 
+    const noInput = document.getElementById('input4') // input 요소객체
+
+    // 요청할 url : / ajaxTest4.do?no=xx
+
+    fetch('${contextPath}/ajaxTest4.do?no=' + noInput.value)
+      .then(response => response.json()) // '{"id":"test01", "pwd":"pass01", "name":"홍길순", "age":10}'
+      // {id: 'test01', pwd:'pass01', name:'홍길순', age:10}
+      .then(data => {
+        console.log(data);
+        /*
+        let ul = '<ul>'
+                + '<li>아이디: ' + data.id + '</li>'
+                + '<li>비번: ' + data.pwd + '</li>'
+                + '<li>이름: ' + data.name + '</li>'
+                + '<li>나이: ' + data.age + '</li>'
+              + '</ul>';
+         */
+        let ul =
+          `<ul>
+            <li>아이디: \${data.id}</li>
+            <li>비번: \${data.pwd}</li>
+            <li>이름: \${data.name}</li>
+            <li>나이: \${data.age}</li>
+          </ul>`;
+
+        document.getElementById('result4').innerHTML = ul;
+        noInput.value = ""; // 텍스트상자 초기화
+      })
+  });
 </script>
 
 <hr>
@@ -121,7 +151,26 @@
 </table>
 
 <script>
+document.getElementById('btn5').addEventListener('click', evt => {
+  fetch('${contextPath}/ajaxTest5.do')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); // [{id:xx, pwd:xx, name:xx. age:xx}, {}, {}, ..]
+      // 각 회원객체를 <tr> 요소로 만들어서 tbody 안에 출력하기
+      let tr = '';
+      data.forEach(user => {
+        tr += `<tr>
+                <td> \${user.id}</td>
+                <td> \${user.pwd}</td>
+                <td> \${user.name}</td>
+                <td> \${user.age}</td>
+              </tr>`
+      });
 
+      document.querySelector('#result5>tbody').innerHTML = tr;
+
+    })
+})
 </script>
 
 

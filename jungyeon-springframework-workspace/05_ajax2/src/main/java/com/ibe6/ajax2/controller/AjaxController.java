@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @Slf4j
 @Controller
@@ -48,6 +50,30 @@ public class AjaxController {
         log.debug("user: {}", user);
         String searchedName = "김말똥";
         return searchedName;
+    }
+
+    @ResponseBody
+    @GetMapping(value = "/ajaxTest4.do", produces = "application/json")
+    public UserDto ajaxTest4(int no){
+        log.debug("param no: {}", no);
+        UserDto searchedUser = new UserDto("test01", "pass01", "홍길순", 10);
+        return searchedUser;
+        // Java객체(DTO) => JSON문자열 '{"id":"test01", "pwd":"pass01", "name":"홍길순", "age":10}'
+        // Java객체(배열) => JSON문자열 '["파랑","빨강","초록"]'
+        // Java객체(Map)  => {}
+        // Java객체(List) => []
+    }
+
+    @ResponseBody
+    @GetMapping(value = "/ajaxTest5.do", produces = "application/json")
+    public List<UserDto> ajaxTest5(){
+        List<UserDto> selectedUsers = List.of(                  // [
+                new UserDto("user01", "pass01", "홍길순", 10),  // {'id':'user01', ..},
+                new UserDto("user02", "pass02", "홍길동", 20),  // {'id':'user01', ..},
+                new UserDto("user03", "pass03", "홍길남", 30),  // {'id':'user01', ..},
+                new UserDto("user04", "pass04", "홍길정", 40)   // {'id':'user01', ..}
+        );                                                      // ]
+        return selectedUsers;
     }
 
 }

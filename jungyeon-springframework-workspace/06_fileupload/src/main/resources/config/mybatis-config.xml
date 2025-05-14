@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<typeAliases>
+  <typeAlias type="com.ibe6.fileupload.dto.BoardDto" alias="BoardDto"/>
+  <typeAlias type="com.ibe6.fileupload.dto.AttachmentDto" alias="AttachmentDto"/>
+</typeAliases>
+</configuration>
