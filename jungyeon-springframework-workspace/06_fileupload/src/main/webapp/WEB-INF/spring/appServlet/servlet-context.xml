@@ -16,10 +16,16 @@
 
   <mvc:resources mapping="/resources/**" location="/resources/"/>
 
-  <!--Spring6 : 별도의 라이브러리 필요없음-->
-  <bean class="org.springframework.web.multipart.support.StandardServletMultipartResolver" id="multipartResolver">
-    <!--파일의 최대용량 값 설정 => web.xml-->
+  <!--Spring5 : commons-fileupload 라이브러리 추가 후 아래의 빈을 등록
+  <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+    <property name="maxUploadSizePerFile" value="10485760" />
+    <property name="maxUploadSize" value="104857600" />
+    <property name="defaultEncoding" value="UTF-8"/>
   </bean>
+  -->
 
+  <!--Spring6 : 별도의 라이브러리 필요없음-->
+  <bean class="org.springframework.web.multipart.support.StandardServletMultipartResolver" id="multipartResolver"/>
+  <!--파일의 최대용량 값 설정 => web.xml-->
 </beans>
 
