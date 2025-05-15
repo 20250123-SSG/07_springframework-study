@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+  <!--
+      ## <properties> 엘리멘트 ##
+      별도의 properties 파일을 가져와서 환경변수값을 사용할 수 있게 도와주는 태그
+      프로퍼티 값을 꺼내올 때는 ${key} 표현식 사용
+  -->
+  <properties resource="config/connection-config.properties"/>
+
+  <!--
+      ## <typeAliases> 엘리먼트 ##
+      Mapper파일에 대부분 DTO에 대한 타입 명시시 풀클래스명 작성해야됨
+      풀클래스명 대신에 타입별 별칭을 설정할 수 있음
+  -->
+  <typeAliases>
+    <typeAlias type="com.inyong.sbatis.dto.MenuDto" alias="MenuDto"/>
+  </typeAliases>
+
+
+  <environments default="dev">
+    <environment id="dev">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+
+  <mappers>
+    <mapper resource="mapper/menu-mapper.xml"/>
+  </mappers>
+
+
+
+</configuration>

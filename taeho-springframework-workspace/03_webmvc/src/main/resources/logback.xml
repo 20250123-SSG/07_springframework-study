@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+  <appender class ="ch.qos.logback.core.ConsoleAppender" name = "consoleLog">
+    <encoder>
+      <pattern>%-5level: [%date{yyyy-MM-dd HH:mm:ss}] [%logger:%line] - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender class ="ch.qos.logback.core.ConsoleAppender" name = "fileLog">
+    <file>D:/SSG/workspace/07_springframework-study/taeho-springframework-workspace/03_webmvc/logs/webmvc.log</file>
+    <append>true</append>
+    <immediateFlush>true</immediateFlush>
+    <encoder>
+      <pattern>%-5level: [%date{yyyy-MM-dd HH:mm:ss}] [%logger:%line] - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- 특정 조건 후 기존 파일을 백업으로 전환 후 새파일에서 로깅(Rolling처리)-->
+  <appender class ="ch.qos.logback.core.rolling.RollingFileAppender" name = "rollingFileLog">
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>D:/SSG/workspace/07_springframework-study/taeho-springframework-workspace/03_webmvc/logs/rolling-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+      <!-- 파일별 최대 용량 -->
+      <maxFileSize>5MB</maxFileSize>
+      <!-- 파일별 보관일 -->
+      <maxHistory>5</maxHistory>
+      <!-- 전체 파일 용량 -->
+      <totalSizeCap>100GB</totalSizeCap>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%-5level: [%date{yyyy-MM-dd HH:mm:ss}] [%logger:%line] - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+
+  <!-- 스프링 관련 로그는 INFO 이상만 출력 하도록 -->
+  <logger name = "org.springframework" level="INFO"/>
+  <!-- 해당 폴더 이하에 있는 로그는 DEBUG이상만 출력 -->
+  <logger name = "com.johnth.webmvc" level="DEBUG"/>
+  <!-- 기타 나머지는 WARN 이상만 출력 -->
+  <root level="WARN">
+    <appender-ref ref="consoleLog"/>
+    <appender-ref ref="fileLog"/>
+    <appender-ref ref="rollingFileLog"/>
+  </root>
+</configuration>

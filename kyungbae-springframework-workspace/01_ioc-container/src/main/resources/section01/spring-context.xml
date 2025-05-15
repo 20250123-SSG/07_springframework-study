@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!--
+    * Namespace
+    1. 여러 xml 태그의 이름 충돌을 방지하고자 하는 구분자
+    2. 예를들어 <name> 이라는 태그가 사람의 이름, 도시 이름등 여러 의미로 사용될 수 있음
+      => namespace 사용시 명확하게 구분할 수 있음
+    3. 선언하는 방법 : xmlns:접두어="고유한URI"
+      각 태그 앞에 접두어를 붙여 사용
+      ex) xmlns:person => <person:name>
+          xmlns:city   => <city:name>
+
+    * Schema
+    1. xml 문서의 구조와 규칙(사용가능한 태그, 사용가능한 속성)을 정의한 설계도
+    2. 스키마 파일들은 주로 .xsd 파일로 제공됨
+    3. xml 문서가 올바른 구조인지 검증하는데 사용됨
+  -->
+
+  <bean class="com.kyungbae.ioc.section01.xmlconfig.Calculator" id="calc"/>
+
+  <!-- property 사용 -->
+  <bean class="com.kyungbae.ioc.section01.xmlconfig.Student" id="student1">
+    <property name="name" value="홍길동"/>
+    <property name="academy" value="SSG I&amp;C"/>
+    <property name="classNo" value="2"/>
+    <property name="calc" ref="calc"/>
+  </bean>
+
+  <!-- p namespace 추가 후 사용 가능 -->
+  <bean class="com.kyungbae.ioc.section01.xmlconfig.Student" id="student2"
+        p:name="김말똥"
+        p:academy="SSG I&amp;C"
+        p:classNo="3"
+        p:calc-ref="calc"
+  />
+
+  <!-- 매개변수 생성자 사용 -->
+  <bean class="com.kyungbae.ioc.section01.xmlconfig.Student" id="student3">
+    <constructor-arg value="김순신"/>
+    <constructor-arg value="SSG I&amp;C"/>
+    <constructor-arg value="4"/>
+    <constructor-arg ref="calc"/>
+  </bean>
+
+</beans>
