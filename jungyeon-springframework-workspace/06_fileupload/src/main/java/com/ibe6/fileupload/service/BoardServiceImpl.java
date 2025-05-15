@@ -22,7 +22,7 @@ public class BoardServiceImpl implements BoardService{
     private final FileUtil fileUtil;
 
     @Override
-    public int registOnefileBoard(BoardDto board, MultipartFile uploadFile) {
+    public int registOneFileBoard(BoardDto board, MultipartFile uploadFile) {
         BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
         // tbl_board_insert
         int result = boardMapper.insertBoard(board); // 글번호 생성 => board의 boardNo 담겨있음
@@ -49,6 +49,29 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public int registManyFileBoard(BoardDto board, List<MultipartFile> uploadFiles) {
-        return 0;
+
+        BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
+
+        int result = boardMapper.insertBoard(board); // 게시글 table에 먼저 insert => 글번호 생성
+        if(result > 0 && uploadFiles != null){
+            for(MultipartFile uploadFile : uploadFiles){
+                if(uploadFile != null & !uploadFile.getOriginalFilename().equals("")){
+
+                    // 파일업로드
+                    Map<String, String> map = fileUtil.fileUpload(uploadFile);
+                    // db에 정보기록
+                    AttachmentDto attach = AttachmentDto.builder()
+                            .filePath(map.get("filePath"))
+                            .originalName(map.get("originalFileName"))
+                            .filesystemName(map.get("filesystemName"))
+                            .refBoardNo(board.getBoardNo())
+                            .build();
+                result += boardMapper.insertAttach(attach);
+
+                }
+            }
+        }
+
+        return result;
     }
 }
