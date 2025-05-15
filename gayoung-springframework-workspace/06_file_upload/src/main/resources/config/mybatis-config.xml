@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="com.younggalee.fileupload.dto.AttachmentDto" alias="AttachmentDto"/>
+        <typeAlias type="com.younggalee.fileupload.dto.BoardDto" alias="BoardDto"/>
+    </typeAliases>
+</configuration>
+
+        <!-- (5)  코드작성하면서 진행-->
