@@ -19,7 +19,7 @@ import java.util.Map;
 @Aspect
 public class AroundLoggingAdvice {
 
-    @Around("execution (* com.ino.mybatisspring.controller.*Controller.*(..))")
+    @Around("execution (* com.johnth.mybatisspring.controller.*Controller.*(..))")
     public Object myAroundAdvice(ProceedingJoinPoint prjp) throws Throwable {
 
         // before logic method
