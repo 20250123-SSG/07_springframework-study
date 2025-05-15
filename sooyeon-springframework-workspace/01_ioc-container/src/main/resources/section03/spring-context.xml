@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--xml에 작성하지 않고 클래스에 직접 어노테이션을 작성하여 대체함-->
+  <context:component-scan base-package="com.sotogito.ioc"/> <!--제시한 경로 하위 파일로부터 어노테이션으로적용된 클래스를 스캔하여 빈으로등록하겠다.-->
+</beans>

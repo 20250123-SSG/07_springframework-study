@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+
+  <!--콘솔에 로그를 출력해주는 Appender-->
+  <appender class="ch.qos.logback.core.ConsoleAppender" name="consoleLog">
+    <encoder>
+      <pattern>%-5level: [%date{yyyy-MM-dd HH:mm:ss}] [%logger:%line] - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!--파일에 로그를 출력해주는 Appender-->
+  <appender class="ch.qos.logback.core.FileAppender" name="fileLog">
+    <file>/logs/webmvc.log</file>
+    <append>true</append>
+    <immediateFlush>true</immediateFlush>
+    <encoder>
+      <pattern>%-5level: [%date{yyyy-MM-dd HH:mm:ss}] [%logger:%line] - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!--특정 조건 후에 기존의 파일을 백업파일로 바꾸고 새파일에서 로깅처리되게끔 Appender-->
+  <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="rollingFileLog">
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>/logs/webmvc-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+      <maxFileSize>10MB</maxFileSize>       <!--로그파일이 10MB 넘어가면 새파일 생성-->
+      <maxHistory>30</maxHistory>           <!--로그파일 보관일-->
+      <totalSizeCap>100GB</totalSizeCap>    <!--로그파일 전체가 100GB 넘어가면 오래된거 부터 지우도록-->
+    </rollingPolicy>
+    <encoder>
+      <pattern>%-5level: [%date{yyyy-MM-dd HH:mm:ss}] [%logger:%line] - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="org.springframework" level="INFO"/> <!--스프링관련 클래스들은 INFO 레벨 이상만 출력-->
+  <logger name="com.kangbroo.webmvc" level="DEBUG"/><!--내가 만든 클래스들은 DEBUG 레벨 이상만 출력-->
+
+  <root level="WARN"> <!--기타 그 밖의 클래스들은 WARN 레벨 이상만 출력-->
+    <appender-ref ref="consoleLog"/>
+    <appender-ref ref="fileLog"/>
+    <appender-ref ref="rollingFileLog"/>
+  </root>
+
+</configuration>

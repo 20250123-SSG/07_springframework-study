@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- db 연결 정보 - DataSource 객체 빈 등록 -->
+
+  <bean class="com.zaxxer.hikari.HikariDataSource" id="hikariDataSource">
+  <!-- JDBC Connecting 정보 기입 필요 -->
+    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/menudb"/>
+    <property name="username" value="ino"/>
+    <property name="password" value="ino"/>
+  </bean>
+
+<!-- 기존 SqlSessionFactory 객체를 대신할 SqlSessionFactoryBean 객체 빈 등록 -->
+  <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sessionFactoryBean">
+    <property name="dataSource" ref="hikariDataSource"/>
+    <property name="configLocation" value="classpath:config/mybatis-config.xml"/>
+    <property name="mapperLocations" value="classpath:mappers/*.xml"/>
+  </bean>
+<!-- 기존 SqlSession 객체를 대신할 SqlSessionTemplate 객체 빈 등록, Service단 DI를 통해 사용 -->
+  <bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
+    <constructor-arg ref="sessionFactoryBean"/>
+  </bean>
+</beans>

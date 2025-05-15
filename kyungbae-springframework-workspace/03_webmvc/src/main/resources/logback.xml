@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--<!DOCTYPE configuration>-->
+
+<configuration>
+
+  <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+<!--      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%kvp- %msg%n</pattern>-->
+      <pattern>%-5level [%date{yyyy-MM-dd HH:mm:ss}] [%logger:%line] - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender class="ch.qos.logback.core.FileAppender" name="fileLog">
+<!--    <file>/User/username/logs/webmvc.log</file>  맥에서는-->
+    <file>/logs/webmvc.log</file>
+    <append>true</append>
+    <immediateFlush>true</immediateFlush>
+    <encoder>
+      <pattern>%-5level [%date{yyyy-MM-dd HH:mm:ss}] [%logger:%line] - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- 특정 조건 후에 기존의 파일을 백업파일로 바꾸고 새파일에서 로깅처리되게끔 appender -->
+  <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="rollingFileLog">
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>/logs/webmvc-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+      <maxFileSize>10MB</maxFileSize> <!-- 로그파일이 10MB 넘어가면 새 파일 생성 -->
+      <maxHistory>30</maxHistory> <!-- 로그파일 보관일 -->
+      <totalSizeCap>100GB</totalSizeCap> <!-- 로그파일 전체가 100GB 넘어가면 오래된거부터 지우도록 -->
+    </rollingPolicy>
+    <encoder>
+      <pattern>%-5level [%date{yyyy-MM-dd HH:mm:ss}] [%logger:%line] - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="org.springframework" level="INFO"/> <!-- springframework 클래스는 info level 이상만 로그 출력 -->
+  <logger name="com.kyungbae.webmvc" level="debug"/>
+
+  <root level="warn">
+    <appender-ref ref="consoleLog"/>
+    <appender-ref ref="fileLog"/>
+    <appender-ref ref="rollingFileLog"/>
+  </root>
+</configuration>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+  <bean class="com.kyungbae.di.dto.Phone" id="phone1">
+    <property name="name" value="아이폰16프로"/>
+    <property name="brand" value="애플"/>
+    <property name="price" value="1600000"/>
+    <property name="releaseDate" value="2024-09-01"/>
+  </bean>
+
+  <bean class="com.kyungbae.di.dto.Phone" id="phone2">
+    <property name="name" value="아이폰15"/>
+    <property name="brand" value="파인애플"/>
+    <property name="price" value="1000000"/>
+    <property name="releaseDate" value="2025-12-01"/>
+  </bean>
+
+  <context:component-scan base-package="com.kyungbae.di"/>
+
+</beans>
