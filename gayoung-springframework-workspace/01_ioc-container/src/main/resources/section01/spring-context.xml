@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+    <bean class="com.younggalee.ioc.section01.xmlconfig.Calculator" id="calculator"/>
+    <!-- Calculator calculator = new Calculator(); 가 스프링 내부에서 실행되는 코드 -->
+
+    <bean class="com.younggalee.ioc.section01.xmlconfig.Student" id="student1">
+    <!-- Student student = new Student(); 가 스프링 내부에서 실행되는 코드 -->
+
+        <property name="name" value="홍길동" />
+        <property name="academy" value="ssg i7" />
+        <property name="calc" value="ssg i7"/>
+    </bean>
+
+    <bean class="com.younggalee.ioc.section01.xmlconfig.Student" id="student2"
+        p:name="김발똥"
+        p:academy="SSG I&amp;C"
+        p:classNo="3"
+        p:calc-ref="calculator"/>
+
+    <bean class="com.younggalee.ioc.section01.xmlconfig.StudentService" id="studentService" scope="singleton"/>
+    <!-- 빈 등록시 scope 생략할 경우에는 기본 값이 singleton이다.
+         prototype으로 설정할 경우, 빈 사용시마다 매번 새로이 생성됨-->
+</beans>

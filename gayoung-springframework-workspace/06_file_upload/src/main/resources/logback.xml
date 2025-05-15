@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender class="ch.qos.logback.core.ConsoleAppender" name="consoleLog">
+        <encoder>
+            <pattern>%-5level: [%date{yyyy-MM-dd HH:mm:ss}] [%logger:%line] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework" level="INFO" /> <!--스프링 관련 로그는 info이상만 출력-->
+    <logger name="com.younggalee.fileupload" level="DEBUG" />
+    <logger name="com.younggalee.fileupload.dao" level="INFO" />
+
+    <root level="WARN">
+        <appender-ref ref="consoleLog"/>
+    </root>
+</configuration>
+
+        <!-- 1 -->
