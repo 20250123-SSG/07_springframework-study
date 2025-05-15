@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  <bean class="com.ino.ioc.section01.xmlconfing.Calculator" id="calculator"/>
+  <bean class="com.ino.ioc.section01.xmlconfing.Student" id="student1">
+    <property name="name" value="ino"/>
+    <property name="age" value="25"/>
+    <property name="calc" ref="calculator"/>
+  </bean>
+  <bean class="com.ino.ioc.section01.xmlconfing.Student" id="student2"
+  p:name="hello"
+  p:age="16"
+  p:calc-ref="calculator"/>
+  <bean class="com.ino.ioc.section01.xmlconfing.Student" id="student3">
+    <constructor-arg value="hi"/>
+    <constructor-arg value="25"/>
+    <constructor-arg ref="calculator"/>
+  </bean>
+  <bean class="com.ino.ioc.section01.xmlconfing.StudentService" id="studentService" scope="singleton"/>
+</beans>

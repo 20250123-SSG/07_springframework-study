@@ -1,0 +1,103 @@
+INFO : [2025-05-09 10:47:25] [org.springframework.web.servlet.DispatcherServlet:532] - Initializing Servlet 'appServlet'
+INFO : [2025-05-09 10:47:26] [org.springframework.web.servlet.DispatcherServlet:554] - Completed initialization in 1615 ms
+DEBUG: [2025-05-09 10:47:26] [com.johnth.webmvc.controller.MVCController:40] - debug message - 개발단계 디버깅용도
+INFO : [2025-05-09 10:47:26] [com.johnth.webmvc.controller.MVCController:41] - info message - 정보성 메시지
+WARN : [2025-05-09 10:47:26] [com.johnth.webmvc.controller.MVCController:42] - warn message - 당장 문제는 없지만 추후 시스템 에러의 원인이 될 수 있는 경보성 메시지
+ERROR: [2025-05-09 10:47:26] [com.johnth.webmvc.controller.MVCController:43] - error message - 요청 처리중 문제가 발생한 상태를 기록
+DEBUG: [2025-05-09 10:47:28] [com.johnth.webmvc.controller.MVCController:40] - debug message - 개발단계 디버깅용도
+INFO : [2025-05-09 10:47:28] [com.johnth.webmvc.controller.MVCController:41] - info message - 정보성 메시지
+WARN : [2025-05-09 10:47:28] [com.johnth.webmvc.controller.MVCController:42] - warn message - 당장 문제는 없지만 추후 시스템 에러의 원인이 될 수 있는 경보성 메시지
+ERROR: [2025-05-09 10:47:28] [com.johnth.webmvc.controller.MVCController:43] - error message - 요청 처리중 문제가 발생한 상태를 기록
+INFO : [2025-05-09 11:16:20] [org.springframework.web.servlet.DispatcherServlet:532] - Initializing Servlet 'appServlet'
+INFO : [2025-05-09 11:16:21] [org.springframework.web.servlet.DispatcherServlet:554] - Completed initialization in 1229 ms
+DEBUG: [2025-05-09 11:16:21] [com.johnth.webmvc.controller.MVCController:40] - debug message - 개발단계 디버깅용도
+INFO : [2025-05-09 11:16:21] [com.johnth.webmvc.controller.MVCController:41] - info message - 정보성 메시지
+WARN : [2025-05-09 11:16:21] [com.johnth.webmvc.controller.MVCController:42] - warn message - 당장 문제는 없지만 추후 시스템 에러의 원인이 될 수 있는 경보성 메시지
+ERROR: [2025-05-09 11:16:21] [com.johnth.webmvc.controller.MVCController:43] - error message - 요청 처리중 문제가 발생한 상태를 기록
+WARN : [2025-05-09 11:16:22] [org.springframework.web.servlet.PageNotFound:1300] - No mapping for GET /webmvc/resources/js/sample.js
+WARN : [2025-05-09 11:16:22] [org.springframework.web.servlet.PageNotFound:461] - No endpoint GET /webmvc/resources/js/sample.js.
+WARN : [2025-05-09 11:16:25] [org.springframework.web.servlet.PageNotFound:1300] - No mapping for GET /webmvc/memeber/detail.do
+WARN : [2025-05-09 11:16:25] [org.springframework.web.servlet.PageNotFound:461] - No endpoint GET /webmvc/memeber/detail.do.
+WARN : [2025-05-09 11:17:20] [org.springframework.web.servlet.PageNotFound:1300] - No mapping for GET /webmvc/memeber/detail.do
+WARN : [2025-05-09 11:17:21] [org.springframework.web.servlet.PageNotFound:461] - No endpoint GET /webmvc/memeber/detail.do.
+INFO : [2025-05-09 11:19:51] [org.springframework.web.servlet.DispatcherServlet:532] - Initializing Servlet 'appServlet'
+INFO : [2025-05-09 11:19:53] [org.springframework.web.servlet.DispatcherServlet:554] - Completed initialization in 1373 ms
+DEBUG: [2025-05-09 11:19:53] [com.johnth.webmvc.controller.MVCController:40] - debug message - 개발단계 디버깅용도
+INFO : [2025-05-09 11:19:53] [com.johnth.webmvc.controller.MVCController:41] - info message - 정보성 메시지
+WARN : [2025-05-09 11:19:53] [com.johnth.webmvc.controller.MVCController:42] - warn message - 당장 문제는 없지만 추후 시스템 에러의 원인이 될 수 있는 경보성 메시지
+ERROR: [2025-05-09 11:19:53] [com.johnth.webmvc.controller.MVCController:43] - error message - 요청 처리중 문제가 발생한 상태를 기록
+WARN : [2025-05-09 11:19:55] [org.springframework.web.servlet.PageNotFound:1300] - No mapping for GET /webmvc/resources/js/sample.js
+WARN : [2025-05-09 11:19:55] [org.springframework.web.servlet.PageNotFound:461] - No endpoint GET /webmvc/resources/js/sample.js.
+DEBUG: [2025-05-09 11:19:58] [com.johnth.webmvc.controller.MemberController:21] - 조회하고자 하는 번호 : 1
+DEBUG: [2025-05-09 11:19:58] [com.johnth.webmvc.controller.MVCController:40] - debug message - 개발단계 디버깅용도
+INFO : [2025-05-09 11:19:58] [com.johnth.webmvc.controller.MVCController:41] - info message - 정보성 메시지
+WARN : [2025-05-09 11:19:58] [com.johnth.webmvc.controller.MVCController:42] - warn message - 당장 문제는 없지만 추후 시스템 에러의 원인이 될 수 있는 경보성 메시지
+ERROR: [2025-05-09 11:19:58] [com.johnth.webmvc.controller.MVCController:43] - error message - 요청 처리중 문제가 발생한 상태를 기록
+WARN : [2025-05-09 11:19:58] [org.springframework.web.servlet.PageNotFound:1300] - No mapping for GET /webmvc/resources/js/sample.js
+WARN : [2025-05-09 11:19:58] [org.springframework.web.servlet.PageNotFound:461] - No endpoint GET /webmvc/resources/js/sample.js.
+INFO : [2025-05-09 11:46:18] [org.springframework.web.servlet.DispatcherServlet:532] - Initializing Servlet 'appServlet'
+INFO : [2025-05-09 11:46:20] [org.springframework.web.servlet.DispatcherServlet:554] - Completed initialization in 1357 ms
+DEBUG: [2025-05-09 11:46:20] [com.johnth.webmvc.controller.MVCController:40] - debug message - 개발단계 디버깅용도
+INFO : [2025-05-09 11:46:20] [com.johnth.webmvc.controller.MVCController:41] - info message - 정보성 메시지
+WARN : [2025-05-09 11:46:20] [com.johnth.webmvc.controller.MVCController:42] - warn message - 당장 문제는 없지만 추후 시스템 에러의 원인이 될 수 있는 경보성 메시지
+ERROR: [2025-05-09 11:46:20] [com.johnth.webmvc.controller.MVCController:43] - error message - 요청 처리중 문제가 발생한 상태를 기록
+WARN : [2025-05-09 11:46:21] [org.springframework.web.servlet.PageNotFound:1300] - No mapping for GET /webmvc/resources/js/sample.js
+WARN : [2025-05-09 11:46:21] [org.springframework.web.servlet.PageNotFound:461] - No endpoint GET /webmvc/resources/js/sample.js.
+DEBUG: [2025-05-09 11:46:34] [com.johnth.webmvc.controller.MemberController:37] - 이름: wer
+DEBUG: [2025-05-09 11:46:34] [com.johnth.webmvc.controller.MemberController:38] - 나이: 11
+DEBUG: [2025-05-09 11:46:34] [com.johnth.webmvc.controller.MemberController:39] - 주소: qq
+DEBUG: [2025-05-09 11:46:34] [com.johnth.webmvc.controller.MVCController:40] - debug message - 개발단계 디버깅용도
+INFO : [2025-05-09 11:46:34] [com.johnth.webmvc.controller.MVCController:41] - info message - 정보성 메시지
+WARN : [2025-05-09 11:46:34] [com.johnth.webmvc.controller.MVCController:42] - warn message - 당장 문제는 없지만 추후 시스템 에러의 원인이 될 수 있는 경보성 메시지
+ERROR: [2025-05-09 11:46:34] [com.johnth.webmvc.controller.MVCController:43] - error message - 요청 처리중 문제가 발생한 상태를 기록
+WARN : [2025-05-09 11:46:34] [org.springframework.web.servlet.PageNotFound:1300] - No mapping for GET /webmvc/resources/js/sample.js
+WARN : [2025-05-09 11:46:34] [org.springframework.web.servlet.PageNotFound:461] - No endpoint GET /webmvc/resources/js/sample.js.
+WARN : [2025-05-09 11:46:45] [org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:247] - Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'addr' for method parameter type String is not present]
+INFO : [2025-05-09 11:47:11] [org.springframework.web.servlet.DispatcherServlet:532] - Initializing Servlet 'appServlet'
+INFO : [2025-05-09 11:47:13] [org.springframework.web.servlet.DispatcherServlet:554] - Completed initialization in 1246 ms
+DEBUG: [2025-05-09 11:47:13] [com.johnth.webmvc.controller.MemberController:49] - 이름: 김건강
+DEBUG: [2025-05-09 11:47:13] [com.johnth.webmvc.controller.MemberController:50] - 나이: 233
+DEBUG: [2025-05-09 11:47:13] [com.johnth.webmvc.controller.MemberController:51] - 주소: 수수
+DEBUG: [2025-05-09 11:47:13] [com.johnth.webmvc.controller.MVCController:40] - debug message - 개발단계 디버깅용도
+INFO : [2025-05-09 11:47:13] [com.johnth.webmvc.controller.MVCController:41] - info message - 정보성 메시지
+WARN : [2025-05-09 11:47:13] [com.johnth.webmvc.controller.MVCController:42] - warn message - 당장 문제는 없지만 추후 시스템 에러의 원인이 될 수 있는 경보성 메시지
+ERROR: [2025-05-09 11:47:13] [com.johnth.webmvc.controller.MVCController:43] - error message - 요청 처리중 문제가 발생한 상태를 기록
+WARN : [2025-05-09 11:47:15] [org.springframework.web.servlet.PageNotFound:1300] - No mapping for GET /webmvc/resources/js/sample.js
+WARN : [2025-05-09 11:47:15] [org.springframework.web.servlet.PageNotFound:461] - No endpoint GET /webmvc/resources/js/sample.js.
+INFO : [2025-05-09 12:12:49] [org.springframework.web.servlet.DispatcherServlet:532] - Initializing Servlet 'appServlet'
+INFO : [2025-05-09 12:12:51] [org.springframework.web.servlet.DispatcherServlet:554] - Completed initialization in 1288 ms
+DEBUG: [2025-05-09 12:12:51] [com.johnth.webmvc.controller.MVCController:40] - debug message - 개발단계 디버깅용도
+INFO : [2025-05-09 12:12:51] [com.johnth.webmvc.controller.MVCController:41] - info message - 정보성 메시지
+WARN : [2025-05-09 12:12:51] [com.johnth.webmvc.controller.MVCController:42] - warn message - 당장 문제는 없지만 추후 시스템 에러의 원인이 될 수 있는 경보성 메시지
+ERROR: [2025-05-09 12:12:51] [com.johnth.webmvc.controller.MVCController:43] - error message - 요청 처리중 문제가 발생한 상태를 기록
+WARN : [2025-05-09 12:12:52] [org.springframework.web.servlet.PageNotFound:1300] - No mapping for GET /webmvc/resources/js/sample.js
+WARN : [2025-05-09 12:12:52] [org.springframework.web.servlet.PageNotFound:461] - No endpoint GET /webmvc/resources/js/sample.js.
+DEBUG: [2025-05-09 12:12:57] [com.johnth.webmvc.controller.MemberController:54] - mem : MemberDto(name=dfdfd, age=11, addr=w)
+DEBUG: [2025-05-09 12:12:57] [com.johnth.webmvc.controller.MVCController:40] - debug message - 개발단계 디버깅용도
+INFO : [2025-05-09 12:12:57] [com.johnth.webmvc.controller.MVCController:41] - info message - 정보성 메시지
+WARN : [2025-05-09 12:12:57] [com.johnth.webmvc.controller.MVCController:42] - warn message - 당장 문제는 없지만 추후 시스템 에러의 원인이 될 수 있는 경보성 메시지
+ERROR: [2025-05-09 12:12:57] [com.johnth.webmvc.controller.MVCController:43] - error message - 요청 처리중 문제가 발생한 상태를 기록
+WARN : [2025-05-09 12:12:57] [org.springframework.web.servlet.PageNotFound:1300] - No mapping for GET /webmvc/resources/js/sample.js
+WARN : [2025-05-09 12:12:57] [org.springframework.web.servlet.PageNotFound:461] - No endpoint GET /webmvc/resources/js/sample.js.
+DEBUG: [2025-05-09 12:13:16] [com.johnth.webmvc.controller.MemberController:54] - mem : MemberDto(name=www, age=123, addr=32ww)
+DEBUG: [2025-05-09 12:13:16] [com.johnth.webmvc.controller.MVCController:40] - debug message - 개발단계 디버깅용도
+INFO : [2025-05-09 12:13:16] [com.johnth.webmvc.controller.MVCController:41] - info message - 정보성 메시지
+WARN : [2025-05-09 12:13:16] [com.johnth.webmvc.controller.MVCController:42] - warn message - 당장 문제는 없지만 추후 시스템 에러의 원인이 될 수 있는 경보성 메시지
+ERROR: [2025-05-09 12:13:16] [com.johnth.webmvc.controller.MVCController:43] - error message - 요청 처리중 문제가 발생한 상태를 기록
+WARN : [2025-05-09 12:13:16] [org.springframework.web.servlet.PageNotFound:1300] - No mapping for GET /webmvc/resources/js/sample.js
+WARN : [2025-05-09 12:13:16] [org.springframework.web.servlet.PageNotFound:461] - No endpoint GET /webmvc/resources/js/sample.js.
+INFO : [2025-05-09 12:17:29] [org.springframework.web.servlet.DispatcherServlet:532] - Initializing Servlet 'appServlet'
+INFO : [2025-05-09 12:17:30] [org.springframework.web.servlet.DispatcherServlet:554] - Completed initialization in 1263 ms
+DEBUG: [2025-05-09 12:17:31] [com.johnth.webmvc.controller.MVCController:40] - debug message - 개발단계 디버깅용도
+INFO : [2025-05-09 12:17:31] [com.johnth.webmvc.controller.MVCController:41] - info message - 정보성 메시지
+WARN : [2025-05-09 12:17:31] [com.johnth.webmvc.controller.MVCController:42] - warn message - 당장 문제는 없지만 추후 시스템 에러의 원인이 될 수 있는 경보성 메시지
+ERROR: [2025-05-09 12:17:31] [com.johnth.webmvc.controller.MVCController:43] - error message - 요청 처리중 문제가 발생한 상태를 기록
+WARN : [2025-05-09 12:17:32] [org.springframework.web.servlet.PageNotFound:1300] - No mapping for GET /webmvc/resources/js/sample.js
+WARN : [2025-05-09 12:17:32] [org.springframework.web.servlet.PageNotFound:461] - No endpoint GET /webmvc/resources/js/sample.js.
+DEBUG: [2025-05-09 12:17:43] [com.johnth.webmvc.controller.MemberController:63] - mem : MemberDto(name=김트로, age=1914, addr=null)
+DEBUG: [2025-05-09 12:17:43] [com.johnth.webmvc.controller.MVCController:40] - debug message - 개발단계 디버깅용도
+INFO : [2025-05-09 12:17:43] [com.johnth.webmvc.controller.MVCController:41] - info message - 정보성 메시지
+WARN : [2025-05-09 12:17:43] [com.johnth.webmvc.controller.MVCController:42] - warn message - 당장 문제는 없지만 추후 시스템 에러의 원인이 될 수 있는 경보성 메시지
+ERROR: [2025-05-09 12:17:43] [com.johnth.webmvc.controller.MVCController:43] - error message - 요청 처리중 문제가 발생한 상태를 기록
+WARN : [2025-05-09 12:17:43] [org.springframework.web.servlet.PageNotFound:1300] - No mapping for GET /webmvc/resources/js/sample.js
+WARN : [2025-05-09 12:17:43] [org.springframework.web.servlet.PageNotFound:461] - No endpoint GET /webmvc/resources/js/sample.js.

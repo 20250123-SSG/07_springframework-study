@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:p="http://www.springframework.org/schema/p"
+      xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean class="com.johnth.ioc.section01.xmlconfig.Calculator" id="calculator"/>
+
+  <bean class="com.johnth.ioc.section01.xmlconfig.Student" id="student1">
+    <property name ="name" value="홍"/>
+    <property name ="academy" value="SSGI&amp;C"/>
+    <property name ="classNo" value="2"/>
+    <property name ="calculator" ref="calculator"/>
+  </bean>
+  <!--
+    Namespace
+      1. 여러 xml 태그의이름 충돌을 방지하고자 하는 구분자
+      2. 선언 방법 : xmlns:접두어 = "고유URI"
+      각 태그 앞에 접두어를 붙여 사용
+        - xmlns:person => <person:name>
+          xmlns:city => <city:name>
+
+    Schema
+    1. xml문서의 구조와
+
+  -->
+
+    <!--
+      Student student = new Student();
+      student.setName("홍");
+      student.setAcademy("SSG");
+      student.setClassNo(2);
+      student.setCalc(calculator);
+    -->
+
+  <!-- p namespace 추가 후 사용가능-->
+  <bean class="com.johnth.ioc.section01.xmlconfig.Student" id="student2"
+    p:name = "김홍도"
+    p:academy="SSG I&amp;C"
+    p:classNo="3"
+    p:calculator-ref="calculator"/>
+
+  <bean class="com.johnth.ioc.section01.xmlconfig.Student" id="student3">
+    <constructor-arg value = "이상"/>
+    <constructor-arg value = "SSG I&amp;C"/>
+    <constructor-arg value = "4"/>
+    <constructor-arg ref= "calculator"/>
+  </bean>
+
+  <bean class="com.johnth.ioc.section01.xmlconfig.StudentService" id="studentService" scope="singleton" />
+
+</beans>

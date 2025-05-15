@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+  <!-- console appender -->
+  <appender class="ch.qos.logback.core.ConsoleAppender" name="consoleLog">
+    <encoder>
+      <!-- generate paterrn -->
+      <pattern>%-5level: [%date{yyyy-MM-dd HH:mm:ss}] [%logger:%line] - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender class="ch.qos.logback.core.FileAppender" name="fileLog">
+    <file>/logs/webmvc.log</file>
+    <!-- windows -> c drive 밑 logs 폴더 자동 생성됨 -->
+    <!-- mac -> /Users/이름/~~ 등으로 생성해야됨 -->
+    <append>true</append>
+    <immediateFlush>true</immediateFlush>
+    <encoder>
+      <pattern>%-5level: [%date{yyyy-MM-dd HH:mm:ss}] [%logger:%line] - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!--특정 조건 후에 기존 파일을 백업 파일로 변경하고 새 파일에서 로깅 처리되게-->
+  <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="rollingLog">
+    <!--시간, 크기 기준으로 rolling 정책, %d를 통해 날짜 기입, %i를 통해 순번 기입-->
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>/logs/webmvc-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+      <maxFileSize>10MB</maxFileSize> <!--로그파일 최대 용량-->
+      <maxHistory>30</maxHistory> <!--로그파일 보관일-->
+      <totalSizeCap>100GB</totalSizeCap> <!--로그파일 전체 최대 용량, 넘으면 오래된 것부터 지움-->
+    </rollingPolicy>
+    <encoder>
+      <pattern>%-5level: [%date{yyyy-MM-dd HH:mm:ss}] [%logger:%line] - %msg%n</pattern>
+    </encoder>
+  </appender>
+  <logger name="org.springframework" level="INFO" />
+  <logger name="com.ino.webmvc" level="DEBUG"/>
+  <root level="WARN">
+    <appender-ref ref="consoleLog"/>
+    <appender-ref ref="rollingLog"/>
+  </root>
+</configuration>

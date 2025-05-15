@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+  <!-- 기존에 bean 태그를 이용해서 빈 등록해야되는 걸 @Component, @Controller, @Service 어노테이션으로 대체 -->
+
+  <context:component-scan base-package="com.podoseee.ioc"/>
+
+</beans>

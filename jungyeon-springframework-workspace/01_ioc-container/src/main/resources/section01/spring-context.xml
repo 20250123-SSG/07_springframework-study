@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!--
+    * Namespace(네임스페이스)
+    1. 여러 xml 태그의 이름 충돌을 방지하고자 하는 구분자
+    2. 예를들어 <name>이라는 태그가 사람의 이름, 도시의 이름 등 여러 의미로 사용 될 수 있음
+      => 네임스페이스 사용시 명확하게 구분할 수 있음
+    3. 선언하는 방법 : xmlns:접두어="고유한URI"
+       각 태그 앞에 접두어를 붙여 사용
+       ex) xmlns:person   => <person:name>
+           xmlns:city     => <city:name>
+
+    * Schema(스키마)
+    1. xml 문서의 구조와 규칙(사용가능한 태그, 사용가능한 속성)을 정의한 설계도
+    2. 스키마 파일들은 주로 .xsd 파일로 제공됨
+    3. xml 문서가 올바른 구조인지 검증하는데 사용됨
+  -->
+
+
+  <bean class="com.ibe6.ioc.section01.xmlconfig.Calculator" id="calculator"/>
+  <!-- Calculator calculator = new Calculator(); -->
+
+  <bean class="com.ibe6.ioc.section01.xmlconfig.Student" id="student1">
+    <property name="name" value="홍길동"/>
+    <property name="academy" value="SSG I&amp;C"/>
+    <property name="classNo" value="2"/>
+    <property name="calc" ref="calculator"/>
+  </bean>
+  <!--
+    Student student1 = new Student();
+    student1.setName("홍길동");
+    student1.setAcademy("SSG I&C");
+    student1.setClassNo(2);
+    student1.setCalc(calculator);
+  -->
+
+  <!-- p namespace 추가 후 사용 가능 -->
+  <bean class="com.ibe6.ioc.section01.xmlconfig.Student" id="student2"
+        p:name="김말똥"
+        p:academy="SSG I&amp;C"
+        p:classNo="3"
+        p:calc-ref="calculator"
+  />
+
+  <bean class="com.ibe6.ioc.section01.xmlconfig.Student" id="student3">
+    <constructor-arg value="강개순"/>
+    <constructor-arg value="SSG I&amp;C"/>
+    <constructor-arg value="4"/>
+    <constructor-arg ref="calculator"/>
+  </bean>
+  <!--
+    Student student = new Student("강개순", "SSG I&C", 4, calculator);
+  -->
+
+  <bean class="com.ibe6.ioc.section01.xmlconfig.StudentService" id="studentService" scope="singleton"/>
+<!--
+  빈 등록시 scope 생략할 경우 기본값이 singleton
+  prototype으로 설정할 경우 => bean 사용시마다 매번 새로이 생성됨
+-->
+
+
+</beans>

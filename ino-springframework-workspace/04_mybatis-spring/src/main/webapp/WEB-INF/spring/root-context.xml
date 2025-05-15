@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+<!-- db 연결 정보 - DataSource 객체 빈 등록 -->
+
+  <bean class="com.zaxxer.hikari.HikariDataSource" id="hikariDataSource">
+  <!-- JDBC Connecting 정보 기입 필요 -->
+    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/menudb"/>
+    <property name="username" value="ino"/>
+    <property name="password" value="ino"/>
+  </bean>
+
+<!-- 기존 SqlSessionFactory 객체를 대신할 SqlSessionFactoryBean 객체 빈 등록 -->
+  <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sessionFactoryBean">
+    <property name="dataSource" ref="hikariDataSource"/>
+    <property name="configLocation" value="classpath:config/mybatis-config.xml"/>
+    <property name="mapperLocations" value="classpath:mappers/*.xml"/>
+  </bean>
+<!-- 기존 SqlSession 객체를 대신할 SqlSessionTemplate 객체 빈 등록, Service단 DI를 통해 사용 -->
+  <bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
+    <constructor-arg ref="sessionFactoryBean"/>
+  </bean>
+<!-- transaction 처리 위한 빈 등록 -->
+  <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
+    <property name="dataSource" ref="hikariDataSource"/>
+  </bean>
+
+<!--  <tx:annotation-driven transaction-manager="transactionManager"/>-->
+<!--  <aop:aspectj-autoproxy/>-->
+  <tx:advice transaction-manager="transactionManager" id="txAdvice">
+    <tx:attributes> <!-- 트랜잭션 수행 method 에 대해 정의 -->
+      <!-- pointcut의 모든 메소드에서 실행(삽입, 수정, 삭제, 목록조회, 상세조회) -->
+      <tx:method name="*" rollback-for="Exception"/>
+      <!-- 조회 메소드에 대해 제외시킴-->
+      <tx:method name="select*" read-only="true"/>
+      <tx:method name="get*" read-only="true"/>
+      <tx:method name="find*" read-only="true"/>
+    </tx:attributes>
+  </tx:advice>
+  <aop:config>
+    <aop:pointcut id="servicePointCut" expression="execution( * com.ino.mybatisspring.service.*Impl.*(..))"/>
+    <aop:advisor advice-ref="txAdvice" pointcut-ref="servicePointCut"/>
+  </aop:config>
+</beans>
