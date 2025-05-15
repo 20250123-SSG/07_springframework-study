@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.johnth.mybatisspring.dao.MenuMapper">
+
+  <resultMap id="menuResultMap" type="MenuDto">
+    <id column="menu_code" property="menuCode"/>
+    <result column="menu_name" property="menuName"/>
+    <result column="menu_price" property="menuPrice"/>
+    <result column="category_code" property="categoryCode"/>
+    <result column="orderable_status" property="orderStatus"/>
+  </resultMap>
+
+  <select id="selectMenuList" resultMap="menuResultMap">
+    select
+      menu_code
+      , menu_name
+      , menu_price
+      , category_code
+      , orderable_status
+    from
+      tbl_menu
+    where
+      orderable_status = 'Y'
+    order by
+      menu_code desc
+  </select>
+
+  <select id="selectMenuById" resultMap="menuResultMap">
+    select
+      menu_code
+      , menu_name
+      , menu_price
+      , category_code
+      , orderable_status
+    from
+      tbl_menu
+    where
+      menu_code = #{id}
+  </select>
+
+  <insert id="insertMenu" useGeneratedKeys="true" keyProperty="menuCode">
+    insert into
+      tbl_menu
+      (
+        menu_name
+        , menu_price
+        , category_code
+        , orderable_status
+      )
+    values
+      (
+        #{menuName}
+        , #{menuPrice}
+        , #{categoryCode}
+        , #{orderStatus}
+      )
+  </insert>
+
+  <update id="updateMenu">
+    update
+      tbl_menu
+    set
+      menu_name = #{menuName}
+      , menu_price = #{menuPrice}
+      , category_code = #{categoryCode}
+      , orderable_status = #{orderStatus}
+    where
+      menu_code = #{menuCode}
+  </update>
+
+  <delete id="deleteMenu">
+    delete
+      from tbl_menu
+    where
+      <!-- 배열이 직접 전달됨, 전달된 값을 foreach로 한번에 삭제-->
+    <foreach collection="array" item="code" open="menu_code in (" separator="," close=")">
+      #{code} )
+    </foreach>
+  </delete>
+</mapper>

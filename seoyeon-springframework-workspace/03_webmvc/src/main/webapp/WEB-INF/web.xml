@@ -8,9 +8,8 @@
     * Spring MVC template 프로젝트 기본 설정
     1) 모든 url 요청시 DispatcherServlet이 요청을 받아주는걸로 되어있음
     2) 이때 DispatcherServlet 관련 스프링 환경설정 내용을 servlet-context.xml 파일로 만들어 작성하고
-       해당 DispatcherServlet 구동될 때 servlet-context.xml 파일을 참고해서 동작되도록 되어있음
+       해당 DispatcherServlet이 구동될 때 servlet-context.xml 파일을 참고해서 동작되도록 되어있음
   -->
-
   <servlet>
     <servlet-name>appServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -36,6 +35,8 @@
     <filter-name>encodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  
+
+
+
 
 </web-app>

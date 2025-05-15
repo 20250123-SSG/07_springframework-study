@@ -76,4 +76,9 @@ public class MenuController {
         ra.addFlashAttribute("message", message);
         return "redirect:/menu/list.page";
     }
+
+    @GetMapping("/transaction.do")
+    public void transactionTest(){
+        menuService.registTwoMenu();
+    }
 }

@@ -60,14 +60,14 @@
 1) 현재 애플리케이션의 "모든 패키지안"의 특정 레벨 이상의 로그를 특정 appender에 적용시켜 출력
 2) 작성방법
    <root level="로그레벨(해당레벨이상의 로그만이 출력됨)">
-       <appender-ref ref="로그를 출력시킬 appender"/>
+   		<appender-ref ref="로그를 출력시킬 appender"/>
    </root>
 
 * <logger>
 1) "특정 패키지안"의 특정 레벨 이상 로그를 특정 appender에 적용시켜 출력
 2) 작성방법
    <logger name="특정패키지" level="로그레벨" [additivity="root logger로 전달여부(기본값 true)"]>
-        [<appender-ref ref="로그를 출력시킬 appender" />]
+   	    [<appender-ref ref="로그를 출력시킬 appender" />]
    </logger>
 
 ** 기본적으로 logger가 먼저 반영되고 root logger가 반영됨

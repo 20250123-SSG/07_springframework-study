@@ -85,5 +85,8 @@ public class MenuController {
         return "redirect:/menu/list.page";
     }
 
-
+    @GetMapping("/transaction.do")
+    public void transactionTest(){
+        menuService.registTwoMenu();
+    }
 }
