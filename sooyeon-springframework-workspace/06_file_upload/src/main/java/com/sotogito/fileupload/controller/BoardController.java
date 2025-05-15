@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/board")
@@ -26,21 +28,28 @@ public class BoardController {
 //        log.debug("uploadFile.getOriginalFilename(): {}", uploadFile.getOriginalFilename());
 
         boolean isSuccess = boardService.registOneFileBoard(board, uploadFile) > 0;
-
         if (isSuccess) {
             log.debug("성공");
-        }else {
+        } else {
             log.debug("실패");
         }
 
         return "redirect:/";
+    }
 
+    @PostMapping("/regist2.do")
+    public String registBoard2(@ModelAttribute BoardDto board, @RequestParam List<MultipartFile> uploadFiles) {
+        boolean isSuccess = boardService.registManyFileBoard(board, uploadFiles) == (uploadFiles.size() + 1);
 
-        /**
-         *  서비스에서 처리할거임
-         * 1. tbl_board insert
-         * 2. 첨부파일 업로드(저장)
-         * 3. tbl_attachment insert
-         */
+        if (isSuccess) {
+            log.debug("게시글 등록 성공");
+        } else {
+            log.debug("게시글 등록 실패");
+        }
+
+        log.debug("board = {}", board);
+        log.debug("uploadFiles = {}", uploadFiles);
+
+        return "redirect:/";
     }
 }

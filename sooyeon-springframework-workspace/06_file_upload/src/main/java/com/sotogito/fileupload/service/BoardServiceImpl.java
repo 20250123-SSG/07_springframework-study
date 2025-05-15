@@ -42,17 +42,17 @@ public class BoardServiceImpl implements BoardService {
         int insertResult = boardMapper.insertBoard(board);
 
         boolean isUploadFileValid = (insertResult > 0 && uploadFile != null && !uploadFile.getOriginalFilename().equals(""));
-        if(isUploadFileValid) {
+        if (isUploadFileValid) {
             /// 저장경로
             Map<String, String> uploadResults = fileUtil.fileUpload(uploadFile);
 
             /// db에 저장 - tbl_attachment insert (저장명, 원본명, 수정명, 참조게시글번호)
             AttachmentDto attachment = AttachmentDto.builder()
-                                                    .filePath(uploadResults.get("filePath"))
-                                                    .originalName(uploadResults.get("originalName"))
-                                                    .filesystemName(uploadResults.get("filesystemName"))
-                                                    .refBoardNo(board.getBoardNo())
-                                                    .build();
+                    .filePath(uploadResults.get("filePath"))
+                    .originalName(uploadResults.get("originalName"))
+                    .filesystemName(uploadResults.get("filesystemName"))
+                    .refBoardNo(board.getBoardNo())
+                    .build();
             insertResult = boardMapper.insertAttach(attachment);
         }
 
@@ -61,6 +61,27 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public int registManyFileBoard(BoardDto board, List<MultipartFile> uploadFiles) {
-        return 0;
+        BoardMapper boardMapper = sqlSession.getMapper(BoardMapper.class);
+
+        int insertResult = boardMapper.insertBoard(board);
+
+        boolean isUploadFileValid = (insertResult > 0 && uploadFiles != null && !uploadFiles.isEmpty());
+        if (isUploadFileValid) {
+            for (MultipartFile uploadFile : uploadFiles) {
+                if (uploadFile != null && !uploadFile.getOriginalFilename().equals("")) {
+
+                    Map<String, String> uploadResults = fileUtil.fileUpload(uploadFile);
+
+                    insertResult += boardMapper.insertAttach(AttachmentDto.builder()
+                            .filePath(uploadResults.get("filePath"))
+                            .originalName(uploadResults.get("originalName"))
+                            .filesystemName(uploadResults.get("filesystemName"))
+                            .refBoardNo(board.getBoardNo())
+                            .build());
+
+                }
+            }
+        }
+        return insertResult;
     }
 }
