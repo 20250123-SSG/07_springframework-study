@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+  <bean class="com.zaxxer.hikari.HikariDataSource" id="dataSource">
+    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/menudb"/>
+    <property name="username" value="sotogito"/>
+    <property name="password" value="sotogito"/>
+  </bean>
+
+  <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+    <property name="dataSource" ref="dataSource"/>
+    <property name="configLocation" value="classpath:config/mybatis-config.xml"/>
+    <property name="mapperLocations" value="classpath:mappers/*.xml"/>
+  </bean>
+
+  <bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
+    <constructor-arg ref="sqlSessionFactory"/>
+  </bean>
+
+  <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="txManager">
+    <property name="dataSource" ref="dataSource"/>
+  </bean>
+
+  <tx:advice transaction-manager="txManager" id="txAdvice">
+    <tx:attributes>
+      <tx:method name="*" rollback-for="Exception"/>
+      <tx:method name="select*" read-only="true"/>
+      <tx:method name="get*" read-only="true"/>
+      <tx:method name="find*" read-only="true"/>
+    </tx:attributes>
+  </tx:advice>
+  <aop:config>
+    <aop:pointcut expression="execution(* com.sotogito.fileupload.service.*Impl.*(..))" id="txPointcut"/>
+    <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
+  </aop:config>
+
+</beans>

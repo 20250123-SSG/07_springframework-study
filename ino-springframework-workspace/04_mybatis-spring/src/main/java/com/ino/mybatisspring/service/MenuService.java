@@ -14,4 +14,6 @@ public interface MenuService {
     int updateMenu(MenuDto menu);
 
     int deleteMenu(String[] codes);
+
+    int registTwoMenu();
 }

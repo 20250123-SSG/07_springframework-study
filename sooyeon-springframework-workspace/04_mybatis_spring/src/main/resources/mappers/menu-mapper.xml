@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sotogito.sbatis.dao.MenuMapper">
+
+  <resultMap id="menuResultMap" type="MenuDto">
+    <id     column="menu_code"        property="menuCode"/>
+    <result column="menu_name"        property="menuName"/>
+    <result column="menu_price"       property="menuPrice"/>
+    <result column="category_code"    property="categoryCode"/>
+    <result column="orderable_status" property="orderableStatus"/>
+  </resultMap>
+
+  <!--판매 가능한 메뉴 목록 조회, 최근 등록순-->
+  <select id="selectMenuList" resultMap="menuResultMap">
+    select
+      menu_code
+    , menu_name
+    , menu_price
+    , category_code
+    , orderable_status
+    from
+      tbl_menu
+    where
+      orderable_status = 'Y'
+    order by
+      menu_code desc
+  </select>
+
+  <!--메뉴 코드로 메뉴 하나만 조회-->
+  <select id="selectMenuByMenuCode" parameterType="_int" resultMap="menuResultMap">
+    select
+      menu_code
+    , menu_name
+    , menu_price
+    , category_code
+    , orderable_status
+    from
+      tbl_menu
+    where
+      menu_code = #{menuCode}
+  </select>
+
+  <!--메뉴 등록-->
+  <insert id="insertMenu" parameterType="MenuDto"
+          useGeneratedKeys="true" keyProperty="menuCode">
+    insert into
+      tbl_menu
+      (
+        menu_name
+      , menu_price
+      , category_code
+      , orderable_status
+      )
+    values
+      (
+        #{menuName}
+      , #{menuPrice}
+      , #{categoryCode}
+      , #{orderableStatus}
+      )
+  </insert>
+
+  <!--메뉴 수정-->
+  <update id="updateMenu" parameterType="MenuDto">
+    update
+      tbl_menu
+    set
+      menu_name = #{menuName}
+    , menu_price = #{menuPrice}
+    , category_code = #{categoryCode}
+    , orderable_status = #{orderableStatus}
+    where
+      menu_code = #{menuCode}
+  </update>
+
+
+  <!--메뉴 일괄 삭제-->
+  <delete id="deleteMenusByMenuCode">
+    delete
+    from tbl_menu
+    where
+      menu_code in
+      <foreach collection="array" item="menuCode" open="(" separator="," close=")">
+        #{menuCode}
+      </foreach>
+  </delete>
+
+</mapper>

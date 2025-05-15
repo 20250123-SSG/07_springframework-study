@@ -3,7 +3,7 @@ plugins {
     id 'war'
 }
 
-group 'com.podoseee'
+group 'com.kangbroo'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -27,7 +27,7 @@ dependencies {
     implementation 'org.springframework:spring-context:6.1.6'
     implementation 'org.springframework:spring-webmvc:6.1.6'
 
-    // servlet 라이브러리
+    // servlet/jsp 라이브러리
     compileOnly('jakarta.servlet:jakarta.servlet-api:6.0.0')
     implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
     implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
@@ -43,6 +43,7 @@ dependencies {
     // test 라이브러리
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
 }
 
 test {

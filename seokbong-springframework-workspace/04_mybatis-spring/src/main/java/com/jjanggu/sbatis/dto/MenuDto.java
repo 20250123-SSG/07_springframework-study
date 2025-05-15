@@ -7,6 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
+@Builder
 public class MenuDto {
     private int menuCode;
     private String menuName;
