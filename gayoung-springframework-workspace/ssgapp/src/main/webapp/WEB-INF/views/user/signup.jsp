@@ -4,8 +4,126 @@
 <html>
 <head>
   <title>Title</title>
+
+  <style>
+    .uncheck{display:none;}
+    .smallfont{font-size:0.8em;}
+    .usable{color:green;}
+    .unusable{color:red;}
+  </style>
 </head>
 <body>
+<div class="container p-3">
 
+  <!-- header, nav start -->
+  <jsp:include page="/WEB-INF/views/common/header.jsp"/> <!-- 현재파일위치가 달라질 수 있어서 상대경로가 아닌 webinfo 기준으로 절대경로로 작성하는 것이 좋음 -->
+  <!-- header, nav start -->
+
+  <!-- Section start -->
+  <section class="row m-3" style="min-height: 500px">
+
+    <div class="container border p-5 m-4 rounded">
+      <h2 class="m-4">회원가입</h2>
+      <br>
+
+      <form action="${contextPath}/user/signup.do" method="POST" id="signup_form"> <!-- 액션을 요구하는걸 .do-->
+        <div class="form-group">
+          <label for="userId">* ID :</label>
+          <input type="text" class="form-control" id="userId" name="userId" placeholder="Please Enter ID" required><br>
+          <div id="idcheck_result" class="uncheck smallfont"></div> <!--제어대상-->
+          <br>
+
+          <label for="userPwd">* Password :</label>
+          <input type="password" class="form-control" id="userPwd" name="userPwd" placeholder="Please Enter Password" required><br>
+
+          <label for="checkPwd">* Password Check :</label>
+          <input type="password" class="form-control" id="checkPwd" placeholder="Please Enter Password" required><br> <!--값넘길필요없어서 name파라미터 설정 안함-->
+
+          <label for="userName">* Name :</label>
+          <input type="text" class="form-control" id="userName" name="userName" placeholder="Please Enter Name" required><br> <!--name에 적는 값은 userDto의 필드값. 이렇게 저장하고 summit되는 순간 userDto로 controller에 넘어감-->
+
+          <label for="email"> &nbsp; Email :</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Please Enter Email"><br>
+
+          <label for="phone"> &nbsp; Phone :</label>
+          <input type="tel" class="form-control" id="phone" name="phone" placeholder="Please Enter Phone (-포함)"><br>
+
+          <label for="address"> &nbsp; Address :</label>
+          <input type="text" class="form-control" id="address" name="address" placeholder="Please Enter Address"><br>
+
+          <label for=""> &nbsp; Gender : </label> &nbsp;&nbsp;
+          <input type="radio" name="gender" id="Male" value="M">
+          <label for="Male">남자</label> &nbsp;&nbsp;
+          <input type="radio" name="gender" id="Female" value="F">
+          <label for="Female">여자</label><br>
+        </div>
+        <br>
+        <div class="btns" align="center">
+          <button type="submit" class="btn btn-primary" disabled>회원가입</button>  <!--제어대상-->
+          <button type="reset" class="btn btn-danger"> 초기화</button>
+        </div>
+      </form>
+
+      <script>
+        //동적으로 제어할 요소
+        const msgResult = document.querySelector('#signup_form #idcheck_result'); // div 박스
+        const submitBtn = document.querySelector('#signup_form [type=submit]'); // 회원가입 버튼
+
+        function statusChange(flag) { // 1 :  사용가능   2 : 사용불가능
+          if (flag == 1) {
+            msgResult.classList.add('usable');
+            msgResult.classList.remove('unusable');
+            submitBtn.removeAttribute('disabled');
+          } else if (flag == 2) {
+            msgResult.classList.add('unusable');
+            msgResult.classList.remove('usable');
+            submitBtn.setAttribute('disabled', 'disabled');
+          }
+        }
+
+        document.querySelector('#signup_form #userId').addEventListener('keyup', evt => {
+          const userIdInput = evt.target; // 아이디입력란 input 요소 <!--이벤트가 발생되는 택스트상자-->
+
+          if (userIdInput.value.trim().length == 0){ //값이 다 지워지면
+            msgResult.className = 'uncheck smallfont'; // 초기상태로
+          } else {
+            // 유효성검사후, 중복체크 진행
+
+            msgResult.classList.remove('uncheck');
+
+            const regExp = /^[a-z\d]{5,12}$/;
+            if(regExp.test(userIdInput.value)){ // 패턴에 부합할경우 > 아이디 중복체크 url 요청 (비동기통신)
+
+              //fetch 이용하여 결과받을 것임 (비동기 @responsebody)
+              fetch('${contextPath}/user/idcheck.do?checkId=' + userIdInput.value)
+                .then(response => response.text())
+                .then(data => {
+                  if(data == 'Not Used'){
+                    msgResult.textContent = '사용 가능한 아이디입니다.';
+                    statusChange(1);
+                  } else {
+                    msgResult.textContent = '사용 불가능한 아이디입니다. 다시 입력해주세요.';
+                    statusChange(2);
+                  }
+                })
+
+            } else { //패턴에 부합하지 않을 경우
+              msgResult.textContent = '영문, 숫자 포함 5~12자리로 작성해주세요.';
+              statusChange(2);
+            }
+          }
+        });
+
+      </script>
+
+    </div>
+
+  </section>
+
+  <!-- Footer start -->
+  <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+  <!-- Footer end -->
+
+</div>
 </body>
 </html>

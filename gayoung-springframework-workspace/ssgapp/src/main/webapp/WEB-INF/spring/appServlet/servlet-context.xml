@@ -17,4 +17,7 @@
   <mvc:resources mapping="/resources/**" location="/resources/"/>
   <mvc:resources mapping="/upload/**" location="file:///upload/"/>
 
+  <bean class="org.springframework.web.multipart.support.StandardServletMultipartResolver" id="multipartResolver"/>
+
+
 </beans>
