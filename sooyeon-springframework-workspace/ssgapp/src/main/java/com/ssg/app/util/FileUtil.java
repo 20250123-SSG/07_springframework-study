@@ -13,6 +13,7 @@ import java.util.UUID;
 @Component
 public class FileUtil {
 
+    ///  filderName을 매개변수로 받아서 저장 경로에 의존하지 않고 util답게 사용할 수 있음
     public Map<String, String> fileupload(String folderName, MultipartFile file) {
 
         String filePath = "/upload/" + folderName + DateTimeFormatter.ofPattern("/yyyyMMdd").format(LocalDate.now());
