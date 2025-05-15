@@ -19,8 +19,19 @@
 <h3>응답 페이지 포워딩 또는 redirect 처리</h3>
   <a href="${contextPath}/book/list.do">도서목록페이지</a>
 
+  <hr>
+
+<h3>3.요청 파라미터어워 </h3>
+  <a href="${contextPath}/member/detail.do?no=1">회원상크세 조회</a>
 
 
+  <br><br>
 
+  <form action="${contextPath}/member/regist1.do" method="post">
+    이름: <input type="text" name="name"><br>
+    나이: <input type="number" name="age"><br>
+    주소: <input type="text" name="add"><br>
+    <input type="submit" value="등로크">
+  </form>
 </body>
 </html>

@@ -6,44 +6,45 @@
   <title>Title</title>
 </head>
 <body>
-  <h2>도서 전체 목록 페이지</h2>
-  하단에는 db에서 조회된 목록들
+<h2>도서 전체 목록 페이지</h2>
+하단에는 db로부터 조회된 도서 목록들이 보여져야됨
 
-  <table border="1" id="book_list">
-    <thead>
-      <tr>
-        <th>ㅂㅎ</th>
-        <th>ㅈㅁ</th>
-        <th>ㅈㅈ</th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td>1</td>
-      <td>good</td>
-      <td>asd</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>good2</td>
-      <td>aqw</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>good3</td>
-      <td>vvv</td>
-    </tr>
-    </tbody>
-  </table>
+<table border="1" id="book_list">
+  <thead>
+  <tr>
+    <th>번호</th>
+    <th>제목</th>
+    <th>저자</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>1</td>
+    <td>수학의 정석</td>
+    <td>김수학</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>자바의 정석</td>
+    <td>강자바</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>스프링의 정석</td>
+    <td>이봄</td>
+  </tr>
+  </tbody>
+</table>
 
-  <script>
-    const trList = document.querySelectorAll('#book_list>tbody>tr')
-    trList.forEach((tr) => {
-      // tr.addEventListener('이벤트명', 이벤트핸들러)
-      tr.addEventListener('click', (evt) => {
-        location.href='${contextPath}/book/detail.do?no=x'
-      });
+<!-- /book/detail.do =GET요청=> 상세페이지(/WEB-INF/views/book/detail.jsp) 포워딩 -->
+<script>
+  const trList = document.querySelectorAll('#book_list>tbody>tr'); // [tr, tr, tr]
+  trList.forEach((tr) => {
+    tr.addEventListener('click', (evt) => {
+      location.href = '${contextPath}/book/detail.do?no=x';
     });
-  </script>
+  });
+</script>
+
 </body>
 </html>
