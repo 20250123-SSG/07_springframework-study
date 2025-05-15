@@ -7,9 +7,9 @@
 
   <bean class="com.zaxxer.hikari.HikariDataSource" id="hikariDataSource">
     <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/*****"/>
-    <property name="username" value="******"/>
-    <property name="password" value="******"/>
+    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/springdb"/>
+    <property name="username" value="springtest"/>
+    <property name="password" value="root"/>
   </bean>
 
   <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
@@ -38,6 +38,7 @@
     <aop:pointcut expression="execution(* com.ssg.app.service.*Impl.*(..))" id="txPointcut"/>
     <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
   </aop:config>
+
 
 
 </beans>
