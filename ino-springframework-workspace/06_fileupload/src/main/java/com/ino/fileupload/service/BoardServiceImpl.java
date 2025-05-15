@@ -32,7 +32,7 @@ public class BoardServiceImpl implements BoardService {
 
         int result = boardMapper.insertBoard(board); // boardNo gen
 
-        if(result > 0 && mpf != null && !mpf.getOriginalFilename().equals("")){
+        if (result > 0 && mpf != null && !mpf.getOriginalFilename().equals("")) {
 
             Map<String, String> map = fileUtil.fileupload(mpf);
             AttachmentDto attachment = new AttachmentDto().builder()
@@ -55,36 +55,18 @@ public class BoardServiceImpl implements BoardService {
 
         int result = boardMapper.insertBoard(board); // boardNo gen
 
-        if(result > 0 && !mpfList.isEmpty()){
-            // 1) file upload
-            // 1-1) set upload path (/upload/board/yyyyMMdd
-            String filePath = "/upload/board" + DateTimeFormatter.ofPattern("/yyyyMMdd").format(LocalDate.now());
-            File filePathDir = new File("C:" +filePath);
-            if(!filePathDir.exists()) { // if not exists
-                filePathDir.mkdirs(); // make directory
+        if (result > 0 && mpfList != null)
+        for (int i = 0; i < mpfList.size(); i++) {
+            if (mpfList.get(i) != null && !mpfList.get(i).getOriginalFilename().equals("")) {
+                Map<String, String> map = fileUtil.fileupload(mpfList.get(i));
+                AttachmentDto attachment = new AttachmentDto().builder()
+                        .filePath(map.get("filePath"))
+                        .originalName(map.get("orgFileName"))
+                        .filesystemName(map.get("randUUID"))
+                        .refBoardNo(board.getBoardNo())
+                        .build();
+                result += boardMapper.insertAttachment(attachment);
             }
-            // 1-2) change file name
-            String orgFileName = mpfList.get(0).getOriginalFilename();
-            String ext = orgFileName.substring(orgFileName.lastIndexOf("."));
-            String randUUID = UUID.randomUUID().toString().replace("-", "");  // UUID.randomUUID() : generate rand Val(32, four hypen)
-
-
-            // 1-3. upload
-            try {
-                mpfList.get(0).transferTo(new File(filePathDir, randUUID));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            // 2. tbl_attachment insert (db에 기록 - 저장경로, 원본며으 실제저장파일명, 참조게시글번호)
-            AttachmentDto attachment = new AttachmentDto().builder()
-                    .filePath(filePath)
-                    .originalName(orgFileName)
-                    .filesystemName(randUUID)
-                    .refBoardNo(board.getBoardNo())
-                    .build();
-            result = boardMapper.insertAttachment(attachment);
-
         }
         return result;
     }
