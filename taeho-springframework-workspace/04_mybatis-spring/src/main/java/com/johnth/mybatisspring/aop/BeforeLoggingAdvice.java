@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class BeforeLoggingAdvice {
 
     // point cut
-    @Pointcut("execution (* com.ino.mybatisspring.controller.*Controller.*(..))")
+    @Pointcut("execution (* com.johnth.mybatisspring.controller.*Controller.*(..))")
     public void setPointCut(){}
     // advice method(common logic)
 

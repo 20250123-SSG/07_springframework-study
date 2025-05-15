@@ -107,9 +107,27 @@
 <div id="result4">요청4의 결과가 보여지는 영역</div>
 
 <script>
+  document.getElementById('btn4').addEventListener('click', evt => {
+    const id = document.getElementById('input3_1').value;
+    const pwd = document.getElementById('input3_2').value;
 
+    fetch('${contextPath}/ajaxTest3.do', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        'id': id,
+        'pwd': pwd
+      })
+    })
+      .then(response => response.text())
+      .then(data => {
+        console.log(data);
+        document.getElementById('result3').textContent = data;
+      })
+  })
 </script>
-
 <hr>
 
 <h3>5. Java 객체(List) 응답</h3>
