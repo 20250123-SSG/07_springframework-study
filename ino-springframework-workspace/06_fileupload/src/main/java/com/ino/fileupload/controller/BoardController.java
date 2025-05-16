@@ -36,7 +36,7 @@ public class BoardController {
     public String registBoard2(BoardDto board, List<MultipartFile> mpf){
         int result = boardService.registMultiFileBoard(board, mpf);
 
-        if(result == mpf.size()) {
+        if(result == mpf.size()+1) {
             log.debug("success regist board");
         } else {
             log.debug("failed regist board");
