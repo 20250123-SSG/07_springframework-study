@@ -24,8 +24,69 @@
 <!-- /book/list.do ==Get요청==> 목록페이지(/WEB-INF/views/book/list.jsp) 포워딩 -->
 <a href="${contextPath}/book/list.do">도서목록페이지로 이동</a>
 
+<hr>
+
+<h3>3. 요청파라미터(request param) 처리 연습</h3>
+
+<a href="${contextPath}/member/detail.do?no=1">1번 회원상세조회</a>
+<br><br>
+
+<form action="${contextPath}/member/regist1.do" method="POST">
+  이름 : <input type="text" name="name"> <br>
+  나이 : <input type="number" name="age"> <br>
+  주소 : <input type="text" name="address"> <br>
+  <input type="submit" value="등록">
+</form>
+<br>
+
+<form action="${contextPath}/member/regist2.do" method="POST">
+  이름 : <input type="text" name="name"> <br>
+  나이 : <input type="number" name="age"> <br>
+  주소 : <input type="text" name="address"> <br>
+  <input type="submit" value="등록">
+</form>
+<br>
+
+<form action="${contextPath}/member/regist3.do" method="POST">
+  이름 : <input type="text" name="name"> <br>
+  나이 : <input type="number" name="age"> <br>
+  주소 : <input type="text" name="addr"> <br>
+  <input type="submit" value="등록">
+</form>
+
+<hr>
+
+<h3>4. 포워딩 또는 redirect시 필요한 데이터 담는 방법</h3>
+
+<a href="${contextPath}/notice/list.page">공지사항 목록페이지로 이동</a>
+
+<!--
+  ## url 패턴 ##
+  1. REST 방식 개발
+     1) 프론트엔드와 백엔드를 완벽하게 분리
+     2) 백엔드에서는 요청에 따라 페이지 forwarding 또는 redirect가 아닌
+        요청에 필요한 데이터(자원,리소스)만을 응답하는 방식
+     3) url 패턴 : 리소스(자원) 중심, 복수형 명사로 표현
+        → 조회(GET)     : /books, /books/1
+        → 생성(POST)    : /books
+        → 수정(PUT)     : /books/1
+        → 삭제(DELETE)  : /books/1
+
+  2. REST 방식 개발 x
+     1) 프론트엔드와 백엔드를 함께 개발 (모노리틱 구조)
+     2) 백엔드에서는 요청에 따라 응답페이지로 forwarding 또는 redirect 진행
+     3) url 패턴 : 행위(동작) 중심, 동사형으로 표현
+        → /login.do
+        → /getUserList.do
+        → /user_list.do
+        → /user/modify.do, /user/regist.do
+
+        조회요청(페이지이동)           : *.page
+        추가/수정/삭제요청(데이터변경) : *.do
+-->
+
+
 
 
 </body>
 </html>
-

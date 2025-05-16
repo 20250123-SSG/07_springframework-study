@@ -15,7 +15,7 @@ create table tbl_user(
     gender char(1) check (gender in ('M', 'F')),
     phone varchar(13),
     address varchar(255),
-    profile_url varchar(500),
+    profile_url varchar(500), -- 저장경로 + 저장파일명 : /upload/profile/yyyyMMdd/24vxwer123454vsdf.jpg
     signup_date datetime default now(),
     modify_date datetime default now(),
     role char(1) default 'U' check(role in ('U', 'R', 'A')) -- U:일반회원, R:탈퇴회원, A:관리자
