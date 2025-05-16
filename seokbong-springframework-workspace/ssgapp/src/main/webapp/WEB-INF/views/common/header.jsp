@@ -53,7 +53,7 @@
       <a class="nav-link" href="#">공지사항</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="게시판목록페이지요청url">일반게시판</a>
+      <a class="nav-link" href="${contextPath}/board/list.page?page=1">일반게시판</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">사진게시판</a>

@@ -17,4 +17,6 @@ public class BoardDto {
     private String registDate; // 조회시:화면에 출력할 형식을 문자열로
     private String modifyDate; // 조회시:화면에 출력할 형식을 문자열로
     private String status;
+
+    private int attachCount; // 첨부파일 개수
 }

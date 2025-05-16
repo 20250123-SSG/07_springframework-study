@@ -37,17 +37,18 @@ public class UserController {
     }
 
     @PostMapping("/signin.do")
-    public void signin(UserDto user, HttpSession session
+    public String signin(UserDto user, HttpSession session
             , RedirectAttributes redirectAttributes){
 
         UserDto selectedUser = userService.getUser(user);
-        if(selectedUser !=  null){ // 로그인 성공
+        if(selectedUser != null){ // 로그인 성공
             session.setAttribute("loginUser", selectedUser);
-            redirectAttributes.addFlashAttribute("message","로그인실패");
-
-        }else { // 로그인실패
-
+            redirectAttributes.addFlashAttribute("message", selectedUser.getUserName() + "님 환영합니다~");
+        }else { // 로그인 실패
+            redirectAttributes.addFlashAttribute("message", "로그인 실패!");
         }
+
+        return "redirect:/";
 
     }
 
