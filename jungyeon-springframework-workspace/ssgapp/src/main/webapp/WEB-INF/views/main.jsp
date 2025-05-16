@@ -7,10 +7,10 @@
 </head>
 <body>
 
-  <div class="container p-3">
+<div class="container p-3">
 
   <!-- Header, Nav start -->
-    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+  <jsp:include page="/WEB-INF/views/common/header.jsp"/>
   <!-- Header, Nav end -->
 
   <!-- Section start -->
@@ -27,8 +27,9 @@
   <!-- Section end -->
 
   <!-- Footer start -->
-    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+  <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
   <!-- Footer end -->
-  </div>
+
+</div>
 </body>
 </html>
