@@ -66,10 +66,10 @@
           #{userId}
         , #{userPwd}
         , #{userName}
-        , #{email}
-        , #{gender}
-        , #{phone}
-        , #{address}
+        , NULLIF(#{email}, '')
+        , NULLIF(#{gender}, '')
+        , NULLIF(#{phone}, '')
+        , NULLIF(#{address}, '')
         )
   </insert>
 
